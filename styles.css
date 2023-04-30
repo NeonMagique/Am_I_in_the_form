@@ -1,0 +1,11 @@
+canvas {
+  border: 1px solid #bada55;
+  background: #eee;
+  display: block;
+  margin: 0 auto;
+}
+
+a {
+  text-align: center;
+  margin: 20px;
+}

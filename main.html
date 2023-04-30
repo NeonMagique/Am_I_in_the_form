@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="styles.css" />
   <head>
     <meta charset="utf-8" />
     <title>I'm in the Canva ?</title>
-    <style>
-      canvas {
-        border: 1px solid #bada55;
-        background: #eee;
-        display: block;
-        margin: 0 auto;
-      }
-    </style>
+    <style></style>
     <h1>
       <center>I'm in the Canva ?</center>
     </h1>
   </head>
   <body>
-    <canvas id="canva" width="800" height="600">
-      <center></center>
-    </canvas>
-    <script src="app.js"></script>
+    <canvas id="canva" width="800" height="600"></canvas>
+    <a>
+      <center>
+        <input type="button" value="DRAW" id="draw" /><input
+          type="button"
+          value="ERASE"
+          id="erase"
+        />
+      </center>
+    </a>
+    <a>
+      <center><p1 id="result">There is no Form</p1></center>
+    </a>
+    <a>
+      <center>
+        <input type="button" value="I'm in the form ?" id="tracker" />
+      </center>
+    </a>
+    <a>
+      <center><p1 id="trackerText"></p1></center>
+    </a>
+    <script src="draw.js"></script>
   </body>
 </html>
