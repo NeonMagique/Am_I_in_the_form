@@ -82,7 +82,6 @@ function isInside_the_form(x, y, form) {
     if (interpolation !== false && interpolation >= x) {
       count++;
     }
-    console.log(count);
   }
   return count % 2 !== 0;
 }
