@@ -61,14 +61,34 @@ function inside_pixel(pixel, x, y) {
   return false;
 }
 
+/**
+ * Return a value if the y value ligne is intersect by the line x1/y1 -> x2/y2
+ * @param {*} x1> x coordinate of the first  point line
+ * @param {*} y1> y coordinate of the first point line
+ * @param {*} x2> x coordinate of the second  point line
+ * @param {*} y2> y coordinate of the second point line
+ * @param {*} y> y coordinate of the horizontal line
+ * @returns bool
+ */
+//
 function intersect(x1, y1, x2, y2, y) {
+  // vérification si la droite coupe la ligne horizontal du point y
   if ((y1 > y && y2 < y) || (y1 < y && y2 > y)) {
+    // calcule de l'interpolation linéaire
     var x = ((x2 - x1) * (y - y1)) / (y2 - y1) + x1;
     return x;
   }
   return false;
 }
 
+/**
+ * Return a true value if the point at the coordinates x/y are in the form
+ * @param {*} x> x coordinate
+ * @param {*} y> y coordinate
+ * @param {*} form>  array of each points
+ * @returns bool
+ */
+//
 function isInside_the_form(x, y, form) {
   let count = 0;
   for (let i = 0; i < form.length - 1; i++) {
@@ -79,10 +99,13 @@ function isInside_the_form(x, y, form) {
       form[i + 1][1],
       y
     );
+    // si l'interpolation est != false && l'interpolation est supérieur à la coordonnée x, le compteur augmente
     if (interpolation !== false && interpolation >= x) {
       count++;
     }
   }
+  console.log("-------")
+  // si le compteur est impair, alors on est dans la forme
   return count % 2 !== 0;
 }
 
