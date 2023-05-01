@@ -104,7 +104,6 @@ function isInside_the_form(x, y, form) {
       count++;
     }
   }
-  console.log("-------")
   // si le compteur est impair, alors on est dans la forme
   return count % 2 !== 0;
 }
@@ -133,7 +132,12 @@ eraseButton.addEventListener("click", () => {
 // gestion du bouton "tracker"
 trackerButton.addEventListener("click", () => {
   if (is_a_form === false) return;
-  tracker = true;
+  if (tracker === false)
+    tracker = true;
+  else {
+    tracker = false;
+    trackerText.innerText = "";
+  }
 });
 
 document.onclick = function (click) {
@@ -182,13 +186,23 @@ document.onclick = function (click) {
     previous = new pixel(x, y, lenght);
     nbr_points += 1;
   }
-  if (tracker === true) {
-    // détection de la position du click
-    var isInside = isInside_the_form(x, y, form);
-    if (isInside) {
-      trackerText.innerText = "You are in the form";
+};
+
+document.onmousemove = function(mouse) {
+    if (tracker === false) return;
+    if (mouse === undefined) mouse = document.mouse;
+    // détection de la position de la souris
+    if (!inside_element(canva, mouse)) {
+      trackerText.innerText = "You are not in the Canva";
     } else {
-      trackerText.innerText = "You are not in the form";
+      const a = canva.getBoundingClientRect();
+      let x = mouse.clientX - a.x;
+      let y = mouse.clientY - a.y;
+      var isInside = isInside_the_form(x, y, form);
+      if (isInside) {
+        trackerText.innerText = "You are in the form";
+      } else {
+        trackerText.innerText = "You are not in the form";
+      }
     }
-  }
 };
